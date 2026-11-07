@@ -3,102 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Complaint Chronology & Evidence Progression</title>
+<title>Unit 432 Legal Dispute & Evidence Record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-    * { box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f4f6f8; color: #111; margin: 0; padding: 15px; display: flex; justify-content: center; }
-    .container { max-width: 850px; width: 100%; margin: 0 auto; }
-    .header-bar { background: #1e293b; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-    .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.08); width: 100%; overflow: hidden; }
-    .step-tag { display: inline-block; background: #2563eb; color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.85em; font-weight: bold; }
-    .meta { color: #64748b; font-size: 0.9em; margin: 10px 0; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
-    .body-content { font-size: 0.95rem; line-height: 1.6; word-wrap: break-word; overflow-wrap: break-word; width: 100%; }
-    .body-content * { max-width: 100% !important; box-sizing: border-box !important; }
-    .attachments { margin-top: 15px; padding-top: 12px; border-top: 1px dashed #cbd5e1; }
-    .attachment-chip { display: inline-flex; align-items: center; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; padding: 6px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 500; margin-right: 6px; margin-bottom: 6px; text-decoration: none; }
-    .body-content img { max-width: 100%; height: auto; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f1f5f9;
+    color: #1e293b;
+    margin: 0;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 850px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .app-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    padding: 28px 24px;
+    border-bottom: 1px solid #334155;
+  }
+  .app-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.025em;
+  }
+  .app-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+  .master-executive-summary {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 20px 24px;
+  }
+  .executive-box {
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-left: 5px solid #2563eb;
+    padding: 18px;
+    border-radius: 10px;
+    color: #1e3a8a;
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  .executive-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1d4ed8;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .email-wrapper {
+    padding: 20px;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .step-tag {
+    display: inline-block;
+    background: #0ea5e9;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .email-meta-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #64748b;
+  }
+  .email-meta-top strong {
+    color: #334155;
+  }
+  .email-thread-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 12px;
+  }
+  .email-summary-box {
+    background-color: #fefce8;
+    border: 1px solid #fef08a;
+    border-left: 4px solid #eab308;
+    padding: 14px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #713f12;
+    line-height: 1.6;
+  }
+  .email-summary-title {
+    font-weight: 700;
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #854d0e;
+  }
+  .email-headers {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: #334155;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    word-break: break-all;
+  }
+  .email-body {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #0f172a;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+  }
+  .email-body img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 10px auto;
+    border-radius: 6px;
+  }
+  .separator {
+    border: none;
+    border-top: 1px dashed #cbd5e1;
+    margin: 20px 0 14px 0;
+  }
+  .attachment-section {
+    font-size: 13px;
+  }
+  .attachment-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #0f172a;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+  .attachment-pill {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e0f2fe;
+    border: 1px solid #bae6fd;
+    color: #0369a1;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    gap: 6px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    word-break: break-all;
+  }
+  .inline-preview {
+    margin-top: 12px;
+    max-width: 100%;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    display: block;
+  }
 </style>
 </head>
 <body>
+
 <div class="container">
-    <div class="header-bar">
-        <h2 style="margin:0 0 5px 0;">Complaint Progression Timeline</h2>
-        <p style="margin:0; opacity: 0.85;">Chronological record (Newest to Oldest)</p>
+  
+  <div class="app-header">
+    <h1>Unit 432 Legal Dispute & Evidence Record</h1>
+    <p>Comprehensive Chronological Dossier • Procedural Non-Compliance & Financial Dispute Log</p>
+  </div>
+
+  <!-- Master Executive Overview -->
+  <div class="master-executive-summary">
+    <div class="executive-box">
+      <div class="executive-title">⚖️ Executive Legal Overview & Statement of Grievance</div>
+      <div>
+        This dossier establishes the official record of bad-faith targeting, regulatory non-compliance, and selective financial harassment directed against Unit 432. The resident, legally bound to the apartment for nearly 20 years and a recipient of CPP disability following an accidental injury, was actively pursuing AI skill development to re-enter the workforce.
+        <br><br>
+        <strong>Procedural Non-Compliance & Bad-Faith Fines:</strong> Management acted in bad faith by allowing unverified third-party gossip (from security personnel, building management, neighbors, or room occupants) to dictate corporate actions without independent verification or statutory 15-day notice procedures. Rather than providing statutory cure periods, management abruptly levied a $2,000 fee via corporate legal counsel under immediate lien threats. After the resident paid this initial charge under duress, management exploited the compliance effort by imposing arbitrary $500 and $2,500 non-registration fines under rigid enforcement of outdated 25-year-old condominium bylaws against a standard two-bedroom unit (where 5–6 occupants is standard).
+        <br><br>
+        <strong>Constructive Displacement & Financial Pressure:</strong> Management's harassment escalated from false claims over a pedal bicycle (where the resident was merely sitting in an empty hallway with nobody around) to filing ungrounded complaints, causing severe public humiliation. Management weaponized unconfirmed pest allegations and inflated charges ($10,000+ totals) while <strong>unlawfully blocking the resident from renting out one bedroom in the two-bedroom unit</strong> without disclosing required statutory procedures. Although a temporary grace period was discussed, management retroactively imposed interest starting September 1st—contradicting the reality that upfront lump-sum capability ($3,000–$4,000) would render a payment plan unnecessary.
+        <br><br>
+        All unauthorized fee assessments, legal chargebacks ($904 Sibley Righton), and discriminatory actions are strictly contested to protect resident rights, preserve procedural fairness, and combat forced displacement.
+      </div>
     </div>
-    <div id="email-list">Loading timeline...</div>
+  </div>
+
+  <div class="email-wrapper" id="email-list">
+    Loading official evidentiary records...
+  </div>
 </div>
 
 <script>
+    const ASSET_DIR = 'assets/';
+
+    function classify(filename) {
+        const ext = filename.split('.').pop().toLowerCase();
+        if (['jpg','jpeg','png','gif','webp','bmp','svg'].includes(ext)) return { cls: 'img', kind: 'image' };
+        if (ext === 'pdf') return { cls: 'pdf', kind: 'pdf' };
+        return { cls: 'other', kind: 'other' };
+    }
+
+    function collectFiles(item) {
+        const fields = ['evidence','attached_evidence','attachments','invoices','files','docs','documents','images'];
+        const seen = new Set();
+        const out = [];
+        for (const f of fields) {
+            let v = item[f];
+            if (!v) continue;
+            if (typeof v === 'string') v = [v];
+            if (!Array.isArray(v)) continue;
+            for (const entry of v) {
+                if (!entry) continue;
+                const name = typeof entry === 'string' ? entry : (entry.name || entry.file || entry.path);
+                if (!name || seen.has(name)) continue;
+                seen.add(name);
+                out.push(name);
+            }
+        }
+        const bodyStr = item.body || item.text || '';
+        const matchRegex = /([a-zA-Z0-9_\-]+\.(?:jpg|jpeg|png|gif|pdf|docx|xlsx))/gi;
+        let m;
+        while ((m = matchRegex.exec(bodyStr)) !== null) {
+            const fname = m[1];
+            if (!fname.toLowerCase().includes('logo') && !seen.has(fname)) {
+                seen.add(fname);
+                out.push(fname);
+            }
+        }
+        return out;
+    }
+
+    function buildAttachmentHtml(files) {
+        if (!files.length) return '';
+        const chips = [];
+        const inline = [];
+
+        for (const name of files) {
+            const info = classify(name);
+            const safeName = encodeURIComponent(name).replace(/%2F/g, '/');
+            const href = ASSET_DIR + safeName;
+            const display = name.split('/').pop();
+            
+            chips.push(
+                `<a href="${href}" target="_blank" rel="noopener" class="attachment-pill">` +
+                `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/></svg>` +
+                `${display}</a>`
+            );
+
+            if (info.kind === 'image') {
+                inline.push(
+                    `<a href="${href}" target="_blank" rel="noopener">` +
+                    `<img src="${href}" alt="${display}" class="inline-preview" loading="lazy" onerror="this.style.display='none'">` +
+                    `</a>`
+                );
+            }
+        }
+
+        return '<hr class="separator">' +
+               '<div class="attachment-section">' +
+               '<div class="attachment-title">Attached Evidence & Documents:</div>' +
+               chips.join('') +
+               (inline.length ? inline.join('') : '') +
+               '</div>';
+    }
+
     fetch('./emails_data.json')
         .then(res => res.json())
         .then(data => {
             const list = document.getElementById('email-list');
             list.innerHTML = '';
-            
+
             if (!data || data.length === 0) {
                 list.innerHTML = '<div class="card" style="color:red; text-align:center;">No records found.</div>';
                 return;
             }
 
-            // Sort newest to oldest based on date string parsing
-            data.sort((a, b) => {
-                let dateA = new Date(a.date || 0);
-                let dateB = new Date(b.date || 0);
-                return dateB - dateA;
-            });
+            data.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
 
             data.forEach((item, index) => {
+                const files = collectFiles(item);
                 const card = document.createElement('div');
                 card.className = 'card';
-                
-                let files = [];
-                for (let k in item) {
-                    if (k !== 'body' && k !== 'text' && item[k]) {
-                        if (Array.isArray(item[k])) {
-                            files.push(...item[k]);
-                        } else if (typeof item[k] === 'string' && (item[k].includes('.jpg') || item[k].includes('.png') || item[k].includes('.pdf') || item[k].includes('.jpeg'))) {
-                            files.push(item[k]);
-                        }
-                    }
-                }
-                
-                const bodyStr = item.body || item.text || '';
-                const matchRegex = /([a-zA-Z0-9_\-]+\.(?:jpg|jpeg|png|gif|pdf|docx|xlsx))/gi;
-                let m;
-                while ((m = matchRegex.exec(bodyStr)) !== null) {
-                    const fname = m[1];
-                    if (!fname.toLowerCase().includes('logo') && !fname.toLowerCase().includes('icon') && !files.includes(fname)) {
-                        files.push(fname);
-                    }
-                }
 
-                let attachHtml = '';
-                if (files.length > 0) {
-                    attachHtml = '<div class="attachments"><strong>Attached Evidence:</strong><br><br>' + 
-                        files.map(att => {
-                            let fname = typeof att === 'object' ? (att.name || att.filename || JSON.stringify(att)) : att;
-                            return `<a href="assets/${fname}" target="_blank" class="attachment-chip">📎 ${fname}</a>`;
-                        }).join('') + 
-                        '</div>';
-                }
+                let bodyContent = item.body || item.text || '';
+                bodyContent = bodyContent.replace(/src=["\'](?!http)([^"\']+)["\']/g, (match, p1) => {
+                    const cleanFile = p1.split('/').pop();
+                    return `src="assets/${cleanFile}"`;
+                });
+
+                const summaryText = item.summary || `Official record regarding "${item.subject || 'Dispute'}".`;
 
                 card.innerHTML = `
-                    <span class="step-tag">Message #${index + 1} of ${data.length} (Newest First)</span>
-                    <h3 style="margin-top:10px; font-size: 1.1rem;">${item.subject || 'Correspondence'}</h3>
-                    <div class="meta"><strong>Date:</strong> ${item.date || 'N/A'} | <strong>From:</strong> ${item.sender || 'N/A'}</div>
-                    <div class="body-content">${bodyStr}</div>
-                    ${attachHtml}
+                    <span class="step-tag">Record #${index + 1} of ${data.length} (Newest First)</span>
+                    <div class="email-meta-top">
+                      <span><strong>Timestamp:</strong> ${item.date || 'N/A'}</span>
+                      <span><strong>Sender:</strong> ${item.sender || 'N/A'}</span>
+                    </div>
+
+                    <div class="email-thread-box">
+                      <div class="email-summary-box">
+                        <div class="email-summary-title">📌 Legal & Compliance Summary</div>
+                        <div>${summaryText}</div>
+                      </div>
+
+                      <div class="email-headers">
+                        <div><strong>Subject:</strong> ${item.subject || 'Correspondence'}</div>
+                      </div>
+
+                      <div class="email-body">
+                        ${bodyContent}
+                      </div>
+
+                      ${buildAttachmentHtml(files)}
+                    </div>
                 `;
                 list.appendChild(card);
             });
-
-            document.querySelectorAll('.body-content img').forEach(img => {
-                img.onerror = () => { img.style.display = 'none'; };
-            });
         })
         .catch(err => {
-            document.getElementById('email-list').innerHTML = '<div class="card" style="color:red; text-align:center;">Error loading data file.</div>';
+            console.error(err);
+            document.getElementById('email-list').innerHTML =
+                '<div class="card" style="color:red; text-align:center;">Error loading <code>emails_data.json</code>.</div>';
         });
 </script>
+
 </body>
 </html>
