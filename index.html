@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complaint Chronology & Evidence Progression</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; background: #f0f2f5; color: #1a1a1a; }
-        .container { max-width: 900px; margin: 0 auto; }
-        .header-bar { background: #1e293b; color: white; padding: 20px; border-radius: 8px; margin-bottom: 25px; }
-        .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 5px solid #2563eb; }
-        .step-tag { display: inline-block; background: #2563eb; color: white; font-weight: bold; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; margin-bottom: 10px; }
-        .meta { color: #64748b; font-size: 0.9em; margin-bottom: 15px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
-        .body-content { line-height: 1.6; max-height: 450px; overflow-y: auto; background: #fafafa; padding: 15px; border-radius: 6px; border: 1px solid #f1f5f9; }
-        .attachments { margin-top: 15px; padding-top: 10px; border-top: 1px dashed #cbd5e1; }
-        .attachment-chip { display: inline-block; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; padding: 6px 12px; border-radius: 16px; font-size: 0.85em; text-decoration: none; margin-right: 8px; margin-top: 5px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complaint Chronology & Evidence Progression</title>
+<style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f4f6f8; color: #111; margin: 0; padding: 20px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .header-bar { background: #1e293b; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .step-tag { display: inline-block; background: #2563eb; color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.85em; font-weight: bold; }
+    .meta { color: #64748b; font-size: 0.9em; margin: 10px 0; }
+    .body-content { line-height: 1.6; }
+    .attachments { margin-top: 15px; padding-top: 10px; border-top: 1px solid #e2e8f0; }
+    .attachment-chip { display: inline-block; background: #f1f5f9; padding: 5px 10px; border-radius: 4px; font-size: 0.85em; margin-right: 5px; color: #334155; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-bar">
-            <h2>Complaint Progression Timeline</h2>
-            <p style="margin:0; opacity: 0.85;">Chronological record of correspondence & attachments (Oldest to Newest)</p>
-        </div>
-        <div id="email-list">Loading progression...</div>
+<div class="container">
+    <div class="header-bar">
+        <h2>Complaint Progression Timeline</h2>
+        <p style="margin:0; opacity: 0.85;">Chronological record of correspondence & attachments (Oldest to Newest)</p>
     </div>
-    <script>
-        fetch('emails_data.json')
-            .then(res => res.json())
-            .then(data => {
-                const list = document.getElementById('email-list');
-                list.innerHTML = '';
-                data.forEach((item, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    let attachHtml = item.attachments.map(a => `<a href="attachments/${a}" target="_blank" class="attachment-chip">📎 ${a}</a>`).join('');
-                    card.innerHTML = `
-                        <span class="step-tag">Message #${index + 1} of ${data.length}</span>
-                        <h2 style="margin-top:5px;">${item.subject}</h2>
-                        <div class="meta"><strong>Date:</strong> ${item.date} <br> <strong>From:</strong> ${item.sender}</div>
-                        <div class="body-content">${item.body}</div>
-                        ${item.attachments.length ? `<div class="attachments"><strong>Attached Evidence:</strong><br>${attachHtml}</div>` : ''}
-                    `;
-                    list.appendChild(card);
-                });
-            })
-            .catch(err => {
-                document.getElementById('email-list').innerHTML = '<p>Error loading records.</p>';
+    <div id="email-list">Loading progression...</div>
+</div>
+
+<script>
+    fetch('/Psc/emails_data.json')
+        .then(res => res.json())
+        .then(data => {
+            const list = document.getElementById('email-list');
+            list.innerHTML = '';
+            data.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                let attachHtml = '';
+                if (item.attachments && item.attachments.length > 0) {
+                    attachHtml = '<div class="attachments"><strong>Attachments:</strong> ' + 
+                        item.attachments.map(att => `<span class="attachment-chip">${att}</span>`).join('') + 
+                        '</div>';
+                }
+                card.innerHTML = `
+                    <span class="step-tag">Step #${index + 1}</span>
+                    <h3 style="margin-top:10px;">${item.subject || 'Correspondence'}</h3>
+                    <div class="meta"><strong>Date:</strong> ${item.date || 'N/A'} | <strong>From:</strong> ${item.sender || 'N/A'}</div>
+                    <div class="body-content">${item.body || ''}</div>
+                    ${attachHtml}
+                `;
+                list.appendChild(card);
             });
-    </script>
+        })
+        .catch(err => {
+            document.getElementById('email-list').innerHTML = 'Error loading progression data. Please verify pathing.';
+        });
+</script>
 </body>
 </html>
