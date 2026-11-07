@@ -1,70 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complaint Chronology & Evidence</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f3f4f6; color: #1f2937; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .header { background-color: #1e293b; color: white; padding: 30px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .header h1 { margin: 0 0 10px 0; font-size: 24px; }
-        .header p { margin: 0; color: #cbd5e1; font-size: 14px; }
-        .email-card { background: white; padding: 24px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-left: 4px solid #3b82f6; }
-        .email-badge { background: #2563eb; color: white; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 15px; }
-        .email-subject { font-size: 20px; font-weight: bold; margin-bottom: 10px; line-height: 1.3; }
-        .email-meta { font-size: 13px; color: #6b7280; margin-bottom: 15px; line-height: 1.6; }
-        .email-meta span { font-weight: bold; color: #4b5563; }
-        .email-body { border-top: 1px solid #e5e7eb; padding-top: 15px; font-size: 14px; line-height: 1.6; overflow-x: auto; }
-        .email-body img { max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; }
-        .error { color: red; font-weight: bold; text-align: center; padding: 20px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complaint Chronology & Evidence Progression</title>
+<style>
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f4f6f8; color: #111; margin: 0; padding: 15px; display: flex; justify-content: center; }
+    .container { max-width: 850px; width: 100%; margin: 0 auto; }
+    .header-bar { background: #1e293b; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.08); width: 100%; overflow: hidden; }
+    .step-tag { display: inline-block; background: #2563eb; color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.85em; font-weight: bold; }
+    .meta { color: #64748b; font-size: 0.9em; margin: 10px 0; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+    .body-content { font-size: 0.95rem; line-height: 1.6; word-wrap: break-word; overflow-wrap: break-word; width: 100%; }
+    .body-content * { max-width: 100% !important; box-sizing: border-box !important; }
+    .attachments { margin-top: 15px; padding-top: 12px; border-top: 1px dashed #cbd5e1; }
+    .attachment-chip { display: inline-flex; align-items: center; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; padding: 6px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 500; margin-right: 6px; margin-bottom: 6px; text-decoration: none; }
+    .body-content img { max-width: 100%; height: auto; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Complaint Progression Timeline</h1>
-            <p>Chronological record of correspondence & attachments (Oldest to Newest)</p>
-        </div>
-        <div id="timeline"></div>
+<div class="container">
+    <div class="header-bar">
+        <h2 style="margin:0 0 5px 0;">Complaint Progression Timeline</h2>
+        <p style="margin:0; opacity: 0.85;">Chronological record (Newest to Oldest)</p>
     </div>
+    <div id="email-list">Loading timeline...</div>
+</div>
 
-    <script>
-        fetch('emails_data.json')
-            .then(response => response.json())
-            .then(data => {
-                const timeline = document.getElementById('timeline');
-                if(data.length === 0) {
-                    timeline.innerHTML = '<p class="error">No emails found in the JSON file.</p>';
-                    return;
+<script>
+    fetch('./emails_data.json')
+        .then(res => res.json())
+        .then(data => {
+            const list = document.getElementById('email-list');
+            list.innerHTML = '';
+            
+            if (!data || data.length === 0) {
+                list.innerHTML = '<div class="card" style="color:red; text-align:center;">No records found.</div>';
+                return;
+            }
+
+            // Sort newest to oldest based on date string parsing
+            data.sort((a, b) => {
+                let dateA = new Date(a.date || 0);
+                let dateB = new Date(b.date || 0);
+                return dateB - dateA;
+            });
+
+            data.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                let files = [];
+                for (let k in item) {
+                    if (k !== 'body' && k !== 'text' && item[k]) {
+                        if (Array.isArray(item[k])) {
+                            files.push(...item[k]);
+                        } else if (typeof item[k] === 'string' && (item[k].includes('.jpg') || item[k].includes('.png') || item[k].includes('.pdf') || item[k].includes('.jpeg'))) {
+                            files.push(item[k]);
+                        }
+                    }
                 }
                 
-                data.forEach((email, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'email-card';
-                    
-                    // Clean up the subject from the body if it's there, otherwise just use a placeholder
-                    let subject = "Message from " + email.sender.split('<')[0];
-                    
-                    // Create the HTML
-                    card.innerHTML = `
-                        <div class="email-badge">Message #${index + 1} of ${data.length}</div>
-                        <div class="email-subject">${subject}</div>
-                        <div class="email-meta">
-                            <div><span>Date:</span> ${email.date}</div>
-                            <div><span>From:</span> ${email.sender}</div>
-                        </div>
-                        <div class="email-body">${email.body}</div>
-                    `;
-                    timeline.appendChild(card);
-                });
-            })
-            .catch(error => {
-                document.getElementById('timeline').innerHTML = '<p class="error">Error loading emails. The JSON file might be missing or invalid.</p>';
-                console.error('Error fetching JSON:', error);
+                const bodyStr = item.body || item.text || '';
+                const matchRegex = /([a-zA-Z0-9_\-]+\.(?:jpg|jpeg|png|gif|pdf|docx|xlsx))/gi;
+                let m;
+                while ((m = matchRegex.exec(bodyStr)) !== null) {
+                    const fname = m[1];
+                    if (!fname.toLowerCase().includes('logo') && !fname.toLowerCase().includes('icon') && !files.includes(fname)) {
+                        files.push(fname);
+                    }
+                }
+
+                let attachHtml = '';
+                if (files.length > 0) {
+                    attachHtml = '<div class="attachments"><strong>Attached Evidence:</strong><br><br>' + 
+                        files.map(att => {
+                            let fname = typeof att === 'object' ? (att.name || att.filename || JSON.stringify(att)) : att;
+                            return `<a href="assets/${fname}" target="_blank" class="attachment-chip">📎 ${fname}</a>`;
+                        }).join('') + 
+                        '</div>';
+                }
+
+                card.innerHTML = `
+                    <span class="step-tag">Message #${index + 1} of ${data.length} (Newest First)</span>
+                    <h3 style="margin-top:10px; font-size: 1.1rem;">${item.subject || 'Correspondence'}</h3>
+                    <div class="meta"><strong>Date:</strong> ${item.date || 'N/A'} | <strong>From:</strong> ${item.sender || 'N/A'}</div>
+                    <div class="body-content">${bodyStr}</div>
+                    ${attachHtml}
+                `;
+                list.appendChild(card);
             });
-    </script>
+
+            document.querySelectorAll('.body-content img').forEach(img => {
+                img.onerror = () => { img.style.display = 'none'; };
+            });
+        })
+        .catch(err => {
+            document.getElementById('email-list').innerHTML = '<div class="card" style="color:red; text-align:center;">Error loading data file.</div>';
+        });
+</script>
 </body>
 </html>
- 
-update timestamp
