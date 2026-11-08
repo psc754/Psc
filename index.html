@@ -275,23 +275,18 @@
 
   <!-- Master Executive Overview -->
   <div class="master-executive-summary">
-        <!-- Master Executive Overview -->
-    <div class="master-executive-summary">
-      <div class="executive-box">
-        <div class="executive-title">⚖️ Executive Legal Overview & Statement of Grievance</div>
-        <div>
-          This dossier establishes the official record of bad-faith targeting, regulatory non-compliance, and selective financial harassment directed against Unit 432. The resident, legally bound to the apartment for nearly 20 years and a recipient of CPP disability following an accidental injury, was actively pursuing AI skill development to re-enter the workforce.
-          <br><br>
-          <strong>Total Rejection of Inflated Balance & Unverified Charges:</strong> The resident categorically rejects management's inflated ledger balance of ~$10,715.79. Every disputed charge is contested on the record:
-          <br>
-          • <strong>Unconfirmed Bedbug / Pest Charges:</strong> Strictly disclaimed in full as unverified, unsubstantiated, and improper assessments levied without transparent root-cause verification or statutory compliance.<br>
-          • <strong>Shibley Righton Legal Fees & Balcony Occupation Penalties:</strong> Strictly contested. Management's imposition of legal fees and penalties concerning balcony access/occupation during the active bedbug remediation and pest protocol crisis is completely unjustifiable. Penalizing a resident for displacement logistics during an emergency health remediation violates basic standards of fairness.<br>
-          • <strong>Procedural Non-Compliance & Bad-Faith Fines:</strong> Management acted in bad faith by allowing unverified third-party gossip (from security personnel, building management, neighbors, or room occupants) to dictate corporate actions without independent verification or statutory 15-day notice procedures, abruptly levying a $2,000 fee via corporate legal counsel under immediate lien threats followed by arbitrary non-registration fines.<br>
-          • <strong>Constructive Displacement & Rental Income Loss:</strong> Management's actions—including unlawfully blocking room rentals, forcing severe financial hardship, and retroactively imposing interest—bring the total personal and financial impact to $50,000 to $100,000. The resident maintains a good-faith settlement position of ~$3,000+ (inclusive of a $1,000 arguable levy for a fragile door latch), while rejecting all predatory legal chargebacks ($904+ Sibley Righton) and fraudulent administrative assessments.
-          <br><br>
-          This record is published to explicitly notify management and legal counsel of why these charges are contested and why full accountability is demanded.
-        </div>
+    <div class="executive-box">
+      <div class="executive-title">⚖️ Executive Legal Overview & Statement of Grievance</div>
+      <div>
+        This dossier establishes the official record of bad-faith targeting, regulatory non-compliance, and selective financial harassment directed against Unit 432. The resident, legally bound to the apartment for nearly 20 years and a recipient of CPP disability following an accidental injury, was actively pursuing AI skill development to re-enter the workforce.
+        <br><br>
+        <strong>Procedural Non-Compliance & Bad-Faith Fines:</strong> Management acted in bad faith by allowing unverified third-party gossip (from security personnel, building management, neighbors, or room occupants) to dictate corporate actions without independent verification or statutory 15-day notice procedures. Rather than providing statutory cure periods, management abruptly levied a $2,000 fee via corporate legal counsel under immediate lien threats. After the resident paid this initial charge under duress, management exploited the compliance effort by imposing arbitrary $500 and $2,500 non-registration fines under rigid enforcement of outdated 25-year-old condominium bylaws against a standard two-bedroom unit (where 5–6 occupants is standard).
+        <br><br>
+        <strong>Constructive Displacement & Financial Pressure:</strong> Management's harassment escalated from false claims over a pedal bicycle to filing ungrounded complaints, causing severe public humiliation. Management weaponized unconfirmed pest allegations and inflated charges ($10,000+ totals) while <strong>unlawfully blocking the resident from renting out one bedroom in the two-bedroom unit</strong> without disclosing required statutory procedures. Although a temporary grace period was discussed, management retroactively imposed interest starting September 1st—contradicting the reality that upfront lump-sum capability ($3,000–$4,000) would render a payment plan unnecessary.
+        <br><br>
+        All unauthorized fee assessments, legal chargebacks ($904 Sibley Righton), and discriminatory actions are strictly contested to protect resident rights, preserve procedural fairness, and combat forced displacement.
       </div>
+    </div>
 
     <!-- Official Management Payment Schedule & Formal Disclaimers -->
     <div class="schedule-box">
@@ -503,7 +498,7 @@
                     return `src="assets/${cleanFile}"`;
                 });
 
-                const summaryText = item.summary || item.legal_summary || item.description || `Official record regarding "${item.subject || 'Dispute'}".`;
+                const summaryText = item.summary || `Official record regarding "${item.subject || 'Dispute'}".`;
 
                 card.innerHTML = `
                     <span class="step-tag">Record #${index + 1} of ${data.length} (Newest First)</span>
