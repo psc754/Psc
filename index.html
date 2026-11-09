@@ -10,32 +10,18 @@
 <style>
   * { box-sizing: border-box; }
   html, body {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: #f1f5f9 !important;
-    overflow-x: hidden !important;
+    width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important;
+    background-color: #f1f5f9 !important; overflow-x: hidden !important;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: #1e293b;
-    -webkit-font-smoothing: antialiased;
+    color: #1e293b; -webkit-font-smoothing: antialiased;
   }
   body { display: flex; flex-direction: column; align-items: center; }
   .container {
-    background-color: #ffffff;
-    width: 100% !important;
-    max-width: 900px !important;
-    margin: 0 auto !important;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    border: 1px solid #e2e8f0;
+    background-color: #ffffff; width: 100% !important; max-width: 900px !important;
+    margin: 0 auto !important; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    overflow: hidden; border: 1px solid #e2e8f0;
   }
-  .app-header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: white;
-    padding: 28px 24px;
-    border-bottom: 1px solid #334155;
-  }
+  .app-header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 28px 24px; border-bottom: 1px solid #334155; }
   .app-header h1 { font-size: 22px; font-weight: 700; margin: 0 0 6px 0; letter-spacing: -0.025em; }
   .app-header p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.5; }
   
@@ -58,7 +44,10 @@
   .card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); overflow-wrap: break-word; word-break: break-word; }
   .step-tag { display: inline-block; background: #0ea5e9; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
   
-  .legal-breach-tag { display: inline-block; background: #dc2626; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; margin-left: 8px; box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); }
+  .legal-breach-tag { display: block; background: #dc2626; color: white; padding: 12px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; margin-bottom: 16px; box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); line-height: 1.5; }
+  .breach-item { display: block; margin-top: 6px; padding-left: 20px; position: relative; }
+  .breach-item::before { content: "⚠️"; position: absolute; left: 0; font-size: 0.9rem; }
+  .breach-quote { font-style: italic; color: #fca5a5; display: block; margin-top: 4px; margin-bottom: 8px; border-left: 2px solid #fca5a5; padding-left: 8px; }
 
   .email-meta-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: 12px; color: #64748b; }
   .email-meta-top strong { color: #334155; }
@@ -80,7 +69,6 @@
 <body>
 
 <div class="container">
-  
   <div class="app-header">
     <h1>Unit 432 Legal Dispute & Evidence Record</h1>
     <p>Comprehensive Chronological Dossier • Procedural Non-Compliance & Financial Dispute Log</p>
@@ -147,23 +135,6 @@
 
 <script>
     const ASSET_DIR = 'assets/';
-
-    // The exact summary text you requested to be in EVERY yellow box
-    const CUSTOM_SUMMARY_TEXT = `
-        <div style="margin-bottom: 8px;"><strong>Thread Context & Specific Background ('Fwd: Re: RE: Chargeback Letter_Abell Pest Control_Unit 432'):</strong><br>
-        This record documents clear administrative failure, breach of statutory duty, and procedural bad faith by management regarding Unit 432.</div>
-        
-        <div style="margin-bottom: 8px;"><strong>Thread Financial References:</strong> $200, $317.53, $3,591.00, $4,553.90</div>
-        
-        <div style="margin-bottom: 8px;"><strong>Key Thread Excerpt:</strong> “ <br><br>
-        --<br>Sent with mail.com Mail app</div>
-
-        <div style="margin-bottom: 8px;"><strong>Procedural & Duty of Care Analysis:</strong><br>
-        Rather than addressing core compliance or engaging in fair dialogue, management systematically failed in every administrative duty of care: imposing unverified charges without transparent root-cause verification, bypassing mandatory 15-day notice periods, refusing reasonable discussion ('it costs money to talk to lawyers'), and enforcing retaliatory access restrictions.</div>
-
-        <div><strong>Legal Set-Off & Balance Reduction Statement:</strong><br>
-        By applying a lawful legal set-off against management's inflated ledger (~$10,715.79)—deducting direct financial damages from unlawfully blocked room rentals (~$24,000+), unverified bedbug/pest charges, unconsulted Sibley Righton legal fee chargebacks ($904+), and balcony occupation penalties—the entire alleged balance is extinguished under a good-faith settlement position (~$3,000+ inclusive of a $1,000 arguable levy for a fragile door latch).</div>
-    `;
 
     function classify(filename) {
         const ext = filename.split('.').pop().toLowerCase();
@@ -236,28 +207,70 @@
                '</div>';
     }
 
-    function detectBreach(text) {
-        if (!text) return null;
-        const lower = text.toLowerCase();
-        let breaches = [];
+    function detectBreach(bodyHtml) {
+        if (!bodyHtml) return '';
+        let text = bodyHtml.replace(/<[^>]*>?/gm, ' ');
+        let sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+        let flags = [];
+        let lowerText = text.toLowerCase();
+
+        let patterns = [
+            { label: 'Statutory 15-Day Notice Bypassed', regex: /15[- ]day|without notice|no notice|did not provide/i },
+            { label: 'Unverified Third-Party Hearsay Used', regex: /unverified|gossip|rumor|third[- ]party/i },
+            { label: 'Disputed/Unverified Property Damage Claim', regex: /bedbug|pest|infestation|exterminat/i },
+            { label: 'Blocked Rental Income / Occupancy Interference', regex: /block.*rent|deny.*rent|prevent.*rent|occupant/i },
+            { label: 'Unconsulted Legal Fee Chargeback', regex: /sibley righton|lawyer|legal fee|solicitor/i },
+            { label: 'Bad-Faith Administrative Fine', regex: /fine|\$[0-9,]+|lien/i }
+        ];
+
+        patterns.forEach(p => {
+            if (lowerText.match(p.regex)) {
+                let matchedSentence = sentences.find(s => s.toLowerCase().match(p.regex));
+                if (matchedSentence) {
+                    matchedSentence = matchedSentence.trim().substring(0, 150); 
+                    if (matchedSentence.length === 150) matchedSentence += '...';
+                    flags.push(`<span class="breach-item"><strong>${p.label}:</strong><span class="breach-quote">"${matchedSentence}"</span></span>`);
+                }
+            }
+        });
+
+        if (flags.length > 0) {
+            return `<div class="legal-breach-tag"><strong>🚨 LEGAL BREACH FLAGS DETECTED IN THIS RECORD:</strong>${flags.join('')}</div>`;
+        }
+        return '';
+    }
+
+    // NEW: Dynamic Summary Parser
+    function generateDynamicSummary(bodyHtml) {
+        if (!bodyHtml) return '<div>Official record of correspondence.</div>';
+        let text = bodyHtml.replace(/<[^>]*>?/gm, ' ');
+        let lower = text.toLowerCase();
         
-        if (lower.includes('bypass') || lower.includes('without notice') || lower.includes('no notice') || lower.includes('did not provide')) {
-            breaches.push("Statutory 15-day notice period bypassed.");
+        let html = '';
+
+        // 1. Context / Greeting
+        html += `<div style="margin-bottom: 8px;"><strong>Thread Context:</strong> This record documents correspondence regarding Unit 432, establishing a chronological trail of procedural non-compliance and management actions.</div>`;
+
+        // 2. Procedural Analysis
+        if (lower.includes('lawyer') || lower.includes('sibley') || lower.includes('legal fee')) {
+            html += `<div style="margin-bottom: 8px;"><strong>Procedural & Duty of Care Analysis:</strong> Management bypassed administrative duty of care by imposing unconsulted legal fee chargebacks without transparent root-cause verification or fair dialogue.</div>`;
+        } else if (lower.includes('notice') || lower.includes('rule') || lower.includes('bypass')) {
+            html += `<div style="margin-bottom: 8px;"><strong>Procedural & Duty of Care Analysis:</strong> Management systematically failed in administrative duties by bypassing mandatory statutory notice periods and refusing reasonable discussion.</div>`;
+        } else {
+            html += `<div style="margin-bottom: 8px;"><strong>Procedural & Duty of Care Analysis:</strong> Management consistently failed to engage in fair dialogue, opting instead to impose unverified charges and rigid enforcement.</div>`;
         }
-        if (lower.includes('unverified') || lower.includes('gossip') || lower.includes('rumor') || lower.includes('third-party')) {
-            breaches.push("Third-party hearsay used without verification.");
+
+        // 3. Financial Impact
+        if (lower.includes('rent') || lower.includes('room') || lower.includes('occupant')) {
+            html += `<div style="margin-bottom: 8px;"><strong>Financial Impact Assessment:</strong> Direct financial damages from unlawfully blocked room rentals are being deducted from the inflated ledger, demonstrating severe financial harassment.</div>`;
+        } else {
+            html += `<div style="margin-bottom: 8px;"><strong>Financial Impact Assessment:</strong> Unverified bedbug/pest charges and unconsulted legal fees have resulted in a highly inflated alleged balance.</div>`;
         }
-        if (lower.includes('bedbug') || lower.includes('pest') || lower.includes('door') || lower.includes('latch')) {
-            breaches.push("Disputed/unverified property damage claim detected.");
-        }
-        if (lower.includes('rent') || lower.includes('room') || lower.includes('occupant') || lower.includes('register')) {
-            breaches.push("Blocked rental income / occupancy interference.");
-        }
-        
-        if (breaches.length > 0) {
-            return breaches;
-        }
-        return null;
+
+        // 4. Legal Set-Off (Always at the end)
+        html += `<div><strong>Legal Set-Off & Balance Reduction Statement:</strong> By applying a lawful legal set-off against management's inflated ledger (~$10,715.79)—deducting direct financial damages from blocked rentals (~$24,000+), unverified charges, and unconsulted legal fees—the entire alleged balance is extinguished under a good-faith settlement position (~$3,000+).</div>`;
+
+        return html;
     }
 
     fetch('./emails_data.json')
@@ -284,14 +297,14 @@
                     return `src="assets/${cleanFile}"`;
                 });
 
-                const breaches = detectBreach(bodyContent);
-                const breachHtml = breaches ? `<div class="legal-breach-tag">🚨 Legal Breach Flags: ${breaches.join(" | ")}</div>` : '';
+                const breachHtml = detectBreach(bodyContent);
+                const dynamicSummary = generateDynamicSummary(bodyContent);
 
                 card.innerHTML = `
                     <div>
                         <span class="step-tag">Record #${index + 1} of ${data.length}</span>
-                        ${breachHtml}
                     </div>
+                    ${breachHtml}
                     <div class="email-meta-top">
                       <span><strong>Timestamp:</strong> ${item.date || 'N/A'}</span>
                       <span><strong>Sender:</strong> ${item.sender || 'N/A'}</span>
@@ -300,7 +313,7 @@
                     <div class="email-thread-box">
                       <div class="email-summary-box">
                         <div class="email-summary-title">📌 Legal & Compliance Summary</div>
-                        <div>${CUSTOM_SUMMARY_TEXT}</div>
+                        <div>${dynamicSummary}</div>
                       </div>
 
                       <div class="email-headers">
