@@ -20,11 +20,7 @@
     color: #1e293b;
     -webkit-font-smoothing: antialiased;
   }
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  body { display: flex; flex-direction: column; align-items: center; }
   .container {
     background-color: #ffffff;
     width: 100% !important;
@@ -40,228 +36,45 @@
     padding: 28px 24px;
     border-bottom: 1px solid #334155;
   }
-  .app-header h1 {
-    font-size: 22px;
-    font-weight: 700;
-    margin: 0 0 6px 0;
-    letter-spacing: -0.025em;
-  }
-  .app-header p {
-    margin: 0;
-    font-size: 13px;
-    color: #94a3b8;
-    line-height: 1.5;
-  }
-  .master-executive-summary {
-    background: #f8fafc;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 20px 24px;
-  }
-  .executive-box {
-    background: #eff6ff;
-    border: 1px solid #dbeafe;
-    border-left: 5px solid #2563eb;
-    padding: 18px;
-    border-radius: 10px;
-    color: #1e3a8a;
-    font-size: 0.92rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-  }
-  .executive-title {
-    font-weight: 700;
-    font-size: 1rem;
-    color: #1d4ed8;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .app-header h1 { font-size: 22px; font-weight: 700; margin: 0 0 6px 0; letter-spacing: -0.025em; }
+  .app-header p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.5; }
   
-  /* Management Schedule & Contested Charges Box */
-  .schedule-box {
-    background: #fffbe6;
-    border: 1px solid #ffe58f;
-    border-left: 5px solid #faad14;
-    padding: 18px;
-    border-radius: 10px;
-    color: #533800;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-  .schedule-title {
-    font-weight: 700;
-    font-size: 1rem;
-    color: #d48806;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .disclaimer-list {
-    margin: 8px 0 16px 0;
-    padding-left: 18px;
-  }
-  .disclaimer-list li {
-    margin-bottom: 8px;
-  }
+  .master-executive-summary { background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 20px 24px; }
+  .executive-box { background: #eff6ff; border: 1px solid #dbeafe; border-left: 5px solid #2563eb; padding: 18px; border-radius: 10px; color: #1e3a8a; font-size: 0.92rem; line-height: 1.7; margin-bottom: 20px; }
+  .executive-title { font-weight: 700; font-size: 1rem; color: #1d4ed8; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
   
-  /* Financial Table Styling */
-  .table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    margin-top: 12px;
-  }
-  .finance-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-    background: #ffffff;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid #ffe58f;
-  }
-  .finance-table th {
-    background: #fff1b8;
-    color: #614700;
-    font-weight: 700;
-    text-align: left;
-    padding: 8px 12px;
-    border-bottom: 1px solid #ffe58f;
-  }
-  .finance-table td {
-    padding: 8px 12px;
-    border-bottom: 1px solid #fff1b8;
-  }
-  .finance-table tr:nth-child(even) {
-    background: #fffbe6;
-  }
+  .schedule-box { background: #fffbe6; border: 1px solid #ffe58f; border-left: 5px solid #faad14; padding: 18px; border-radius: 10px; color: #533800; font-size: 0.9rem; line-height: 1.6; margin-bottom: 10px; }
+  .schedule-title { font-weight: 700; font-size: 1rem; color: #d48806; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .disclaimer-list { margin: 8px 0 16px 0; padding-left: 18px; }
+  .disclaimer-list li { margin-bottom: 8px; }
+  
+  .table-responsive { width: 100%; overflow-x: auto; margin-top: 12px; }
+  .finance-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #ffe58f; }
+  .finance-table th { background: #fff1b8; color: #614700; font-weight: 700; text-align: left; padding: 8px 12px; border-bottom: 1px solid #ffe58f; }
+  .finance-table td { padding: 8px 12px; border-bottom: 1px solid #fff1b8; }
+  .finance-table tr:nth-child(even) { background: #fffbe6; }
 
-  .email-wrapper {
-    padding: 20px;
-  }
-  .card {
-    background: white;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-  .step-tag {
-    display: inline-block;
-    background: #0ea5e9;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .email-meta-top {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 8px;
-    font-size: 12px;
-    color: #64748b;
-  }
-  .email-meta-top strong {
-    color: #334155;
-  }
-  .email-thread-box {
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 16px;
-    margin-top: 12px;
-  }
-  .email-summary-box {
-    background-color: #fefce8;
-    border: 1px solid #fef08a;
-    border-left: 4px solid #eab308;
-    padding: 14px;
-    margin-bottom: 16px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    color: #713f12;
-    line-height: 1.6;
-  }
-  .email-summary-title {
-    font-weight: 700;
-    margin-bottom: 4px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #854d0e;
-  }
-  .email-headers {
-    font-size: 12px;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    color: #334155;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e2e8f0;
-    word-break: break-all;
-  }
-  .email-body {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #0f172a;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    max-width: 100%;
-  }
-  .email-body img {
-    max-width: 100% !important;
-    height: auto !important;
-    display: block;
-    margin: 10px auto;
-    border-radius: 6px;
-  }
-  .separator {
-    border: none;
-    border-top: 1px dashed #cbd5e1;
-    margin: 20px 0 14px 0;
-  }
-  .attachment-section {
-    font-size: 13px;
-  }
-  .attachment-title {
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #0f172a;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-  }
-  .attachment-pill {
-    display: inline-flex;
-    align-items: center;
-    background-color: #e0f2fe;
-    border: 1px solid #bae6fd;
-    color: #0369a1;
-    padding: 5px 12px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 500;
-    gap: 6px;
-    margin-right: 6px;
-    margin-bottom: 6px;
-    word-break: break-all;
-  }
-  .inline-preview {
-    margin-top: 12px;
-    max-width: 100%;
-    border-radius: 6px;
-    border: 1px solid #cbd5e1;
-    display: block;
-  }
+  .email-wrapper { padding: 20px; }
+  .card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); overflow-wrap: break-word; word-break: break-word; }
+  .step-tag { display: inline-block; background: #0ea5e9; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
+  
+  .legal-breach-tag { display: inline-block; background: #dc2626; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; margin-left: 8px; box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); }
+
+  .email-meta-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: 12px; color: #64748b; }
+  .email-meta-top strong { color: #334155; }
+  .email-thread-box { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin-top: 12px; }
+  
+  .email-summary-box { background-color: #fefce8; border: 1px solid #fef08a; border-left: 4px solid #eab308; padding: 14px; margin-bottom: 16px; border-radius: 8px; font-size: 0.9rem; color: #713f12; line-height: 1.6; }
+  .email-summary-title { font-weight: 700; margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #854d0e; }
+  
+  .email-headers { font-size: 12px; line-height: 1.5; margin-bottom: 12px; color: #334155; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; word-break: break-all; }
+  .email-body { font-size: 0.9rem; line-height: 1.6; color: #0f172a; overflow-wrap: break-word; word-break: break-word; max-width: 100%; }
+  .email-body img { max-width: 100% !important; height: auto !important; display: block; margin: 10px auto; border-radius: 6px; }
+  .separator { border: none; border-top: 1px dashed #cbd5e1; margin: 20px 0 14px 0; }
+  .attachment-section { font-size: 13px; }
+  .attachment-title { font-weight: 600; margin-bottom: 8px; color: #0f172a; font-size: 0.85rem; text-transform: uppercase; }
+  .attachment-pill { display: inline-flex; align-items: center; background-color: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1; padding: 5px 12px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 500; gap: 6px; margin-right: 6px; margin-bottom: 6px; word-break: break-all; }
+  .inline-preview { margin-top: 12px; max-width: 100%; border-radius: 6px; border: 1px solid #cbd5e1; display: block; }
 </style>
 </head>
 <body>
@@ -273,7 +86,6 @@
     <p>Comprehensive Chronological Dossier • Procedural Non-Compliance & Financial Dispute Log</p>
   </div>
 
-  <!-- Master Executive Overview -->
   <div class="master-executive-summary">
     <div class="executive-box">
       <div class="executive-title">⚖️ Executive Legal Overview & Statement of Grievance</div>
@@ -288,7 +100,6 @@
       </div>
     </div>
 
-    <!-- Official Management Payment Schedule & Formal Disclaimers -->
     <div class="schedule-box">
       <div class="schedule-title">📊 Official Management Payment Schedule & Formal Disclaimers</div>
       <div>
@@ -312,83 +123,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>October 13, 2026</td>
-              <td>$10,715.79</td>
-              <td>$412.92</td>
-              <td>$2,000.00</td>
-              <td>$9,128.71</td>
-            </tr>
-            <tr>
-              <td>November 1, 2026</td>
-              <td>$9,128.71</td>
-              <td>$182.57</td>
-              <td>$1,000.00</td>
-              <td>$8,311.28</td>
-            </tr>
-            <tr>
-              <td>December 1, 2026</td>
-              <td>$8,311.28</td>
-              <td>$166.23</td>
-              <td>$1,000.00</td>
-              <td>$7,477.51</td>
-            </tr>
-            <tr>
-              <td>January 1, 2027</td>
-              <td>$7,477.51</td>
-              <td>$149.55</td>
-              <td>$1,000.00</td>
-              <td>$6,627.06</td>
-            </tr>
-            <tr>
-              <td>February 1, 2027</td>
-              <td>$6,627.06</td>
-              <td>$132.54</td>
-              <td>$1,000.00</td>
-              <td>$5,759.60</td>
-            </tr>
-            <tr>
-              <td>March 1, 2027</td>
-              <td>$5,759.60</td>
-              <td>$115.19</td>
-              <td>$1,000.00</td>
-              <td>$4,874.79</td>
-            </tr>
-            <tr>
-              <td>April 1, 2027</td>
-              <td>$4,874.79</td>
-              <td>$97.50</td>
-              <td>$1,000.00</td>
-              <td>$3,972.29</td>
-            </tr>
-            <tr>
-              <td>May 1, 2027</td>
-              <td>$3,972.29</td>
-              <td>$79.45</td>
-              <td>$1,000.00</td>
-              <td>$3,051.74</td>
-            </tr>
-            <tr>
-              <td>June 1, 2027</td>
-              <td>$3,051.74</td>
-              <td>$61.03</td>
-              <td>$1,000.00</td>
-              <td>$2,112.77</td>
-            </tr>
-            <tr>
-              <td>July 1, 2027</td>
-              <td>$2,112.77</td>
-              <td>$42.26</td>
-              <td>$1,000.00</td>
-              <td>$1,155.03</td>
-            </tr>
-            <tr>
-              <td>August 1, 2027</td>
-              <td>$1,155.03</td>
-              <td>$23.10</td>
-              <td>$1,178.13</td>
-              <td>$0.00</td>
-            </tr>
+            <tr><td>October 13, 2026</td><td>$10,715.79</td><td>$412.92</td><td>$2,000.00</td><td>$9,128.71</td></tr>
+            <tr><td>November 1, 2026</td><td>$9,128.71</td><td>$182.57</td><td>$1,000.00</td><td>$8,311.28</td></tr>
+            <tr><td>December 1, 2026</td><td>$8,311.28</td><td>$166.23</td><td>$1,000.00</td><td>$7,477.51</td></tr>
+            <tr><td>January 1, 2027</td><td>$7,477.51</td><td>$149.55</td><td>$1,000.00</td><td>$6,627.06</td></tr>
+            <tr><td>February 1, 2027</td><td>$6,627.06</td><td>$132.54</td><td>$1,000.00</td><td>$5,759.60</td></tr>
+            <tr><td>March 1, 2027</td><td>$5,759.60</td><td>$115.19</td><td>$1,000.00</td><td>$4,874.79</td></tr>
+            <tr><td>April 1, 2027</td><td>$4,874.79</td><td>$97.50</td><td>$1,000.00</td><td>$3,972.29</td></tr>
+            <tr><td>May 1, 2027</td><td>$3,972.29</td><td>$79.45</td><td>$1,000.00</td><td>$3,051.74</td></tr>
+            <tr><td>June 1, 2027</td><td>$3,051.74</td><td>$61.03</td><td>$1,000.00</td><td>$2,112.77</td></tr>
+            <tr><td>July 1, 2027</td><td>$2,112.77</td><td>$42.26</td><td>$1,000.00</td><td>$1,155.03</td></tr>
+            <tr><td>August 1, 2027</td><td>$1,155.03</td><td>$23.10</td><td>$1,178.13</td><td>$0.00</td></tr>
           </tbody>
         </table>
       </div>
@@ -402,6 +147,23 @@
 
 <script>
     const ASSET_DIR = 'assets/';
+
+    // The exact summary text you requested to be in EVERY yellow box
+    const CUSTOM_SUMMARY_TEXT = `
+        <div style="margin-bottom: 8px;"><strong>Thread Context & Specific Background ('Fwd: Re: RE: Chargeback Letter_Abell Pest Control_Unit 432'):</strong><br>
+        This record documents clear administrative failure, breach of statutory duty, and procedural bad faith by management regarding Unit 432.</div>
+        
+        <div style="margin-bottom: 8px;"><strong>Thread Financial References:</strong> $200, $317.53, $3,591.00, $4,553.90</div>
+        
+        <div style="margin-bottom: 8px;"><strong>Key Thread Excerpt:</strong> “ <br><br>
+        --<br>Sent with mail.com Mail app</div>
+
+        <div style="margin-bottom: 8px;"><strong>Procedural & Duty of Care Analysis:</strong><br>
+        Rather than addressing core compliance or engaging in fair dialogue, management systematically failed in every administrative duty of care: imposing unverified charges without transparent root-cause verification, bypassing mandatory 15-day notice periods, refusing reasonable discussion ('it costs money to talk to lawyers'), and enforcing retaliatory access restrictions.</div>
+
+        <div><strong>Legal Set-Off & Balance Reduction Statement:</strong><br>
+        By applying a lawful legal set-off against management's inflated ledger (~$10,715.79)—deducting direct financial damages from unlawfully blocked room rentals (~$24,000+), unverified bedbug/pest charges, unconsulted Sibley Righton legal fee chargebacks ($904+), and balcony occupation penalties—the entire alleged balance is extinguished under a good-faith settlement position (~$3,000+ inclusive of a $1,000 arguable levy for a fragile door latch).</div>
+    `;
 
     function classify(filename) {
         const ext = filename.split('.').pop().toLowerCase();
@@ -474,6 +236,30 @@
                '</div>';
     }
 
+    function detectBreach(text) {
+        if (!text) return null;
+        const lower = text.toLowerCase();
+        let breaches = [];
+        
+        if (lower.includes('bypass') || lower.includes('without notice') || lower.includes('no notice') || lower.includes('did not provide')) {
+            breaches.push("Statutory 15-day notice period bypassed.");
+        }
+        if (lower.includes('unverified') || lower.includes('gossip') || lower.includes('rumor') || lower.includes('third-party')) {
+            breaches.push("Third-party hearsay used without verification.");
+        }
+        if (lower.includes('bedbug') || lower.includes('pest') || lower.includes('door') || lower.includes('latch')) {
+            breaches.push("Disputed/unverified property damage claim detected.");
+        }
+        if (lower.includes('rent') || lower.includes('room') || lower.includes('occupant') || lower.includes('register')) {
+            breaches.push("Blocked rental income / occupancy interference.");
+        }
+        
+        if (breaches.length > 0) {
+            return breaches;
+        }
+        return null;
+    }
+
     fetch('./emails_data.json')
         .then(res => res.json())
         .then(data => {
@@ -498,10 +284,14 @@
                     return `src="assets/${cleanFile}"`;
                 });
 
-                const summaryText = item.summary || `Official record regarding "${item.subject || 'Dispute'}".`;
+                const breaches = detectBreach(bodyContent);
+                const breachHtml = breaches ? `<div class="legal-breach-tag">🚨 Legal Breach Flags: ${breaches.join(" | ")}</div>` : '';
 
                 card.innerHTML = `
-                    <span class="step-tag">Record #${index + 1} of ${data.length} (Newest First)</span>
+                    <div>
+                        <span class="step-tag">Record #${index + 1} of ${data.length}</span>
+                        ${breachHtml}
+                    </div>
                     <div class="email-meta-top">
                       <span><strong>Timestamp:</strong> ${item.date || 'N/A'}</span>
                       <span><strong>Sender:</strong> ${item.sender || 'N/A'}</span>
@@ -510,7 +300,7 @@
                     <div class="email-thread-box">
                       <div class="email-summary-box">
                         <div class="email-summary-title">📌 Legal & Compliance Summary</div>
-                        <div>${summaryText}</div>
+                        <div>${CUSTOM_SUMMARY_TEXT}</div>
                       </div>
 
                       <div class="email-headers">
