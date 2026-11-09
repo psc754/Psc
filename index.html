@@ -69,6 +69,7 @@
 <body>
 
 <div class="container">
+  
   <div class="app-header">
     <h1>Unit 432 Legal Dispute & Evidence Record</h1>
     <p>Comprehensive Chronological Dossier • Procedural Non-Compliance & Financial Dispute Log</p>
@@ -78,13 +79,21 @@
     <div class="executive-box">
       <div class="executive-title">⚖️ Executive Legal Overview & Statement of Grievance</div>
       <div>
-        This dossier establishes the official record of bad-faith targeting, regulatory non-compliance, and selective financial harassment directed against Unit 432. The resident, legally bound to the apartment for nearly 20 years and a recipient of CPP disability following an accidental injury, was actively pursuing AI skill development to re-enter the workforce.
+        This dossier establishes the official record of bad-faith targeting, regulatory non-compliance, and selective financial harassment directed against Unit 432. The resident has lived in this community for 29 years without incident, yet has never faced such embarrassment and derogatory treatment in their life. They are a recipient of CPP disability following an accidental injury and were actively pursuing AI skill development to re-enter the workforce.
         <br><br>
-        <strong>Procedural Non-Compliance & Bad-Faith Fines:</strong> Management acted in bad faith by allowing unverified third-party gossip (from security personnel, building management, neighbors, or room occupants) to dictate corporate actions without independent verification or statutory 15-day notice procedures. Rather than providing statutory cure periods, management abruptly levied a $2,000 fee via corporate legal counsel under immediate lien threats. After the resident paid this initial charge under duress, management exploited the compliance effort by imposing arbitrary $500 and $2,500 non-registration fines under rigid enforcement of outdated 25-year-old condominium bylaws against a standard two-bedroom unit (where 5–6 occupants is standard).
+        <strong>Procedural Non-Compliance & Bad-Faith Fines:</strong> Management acted in bad faith by allowing unverified third-party gossip (from security personnel, building management, neighbors, or room occupants) to dictate corporate actions without independent verification or statutory 15-day notice procedures. <strong>Security management has been the biggest culprit in telling lies and alleging non-compliant activities.</strong> Rather than providing statutory cure periods, management abruptly levied a $2,000 fee via corporate legal counsel under immediate lien threats. After the resident paid this initial charge under duress, management exploited the compliance effort by imposing arbitrary $500 and $2,500 non-registration fines under rigid enforcement of outdated 25-year-old condominium bylaws against a standard two-bedroom unit.
         <br><br>
-        <strong>Constructive Displacement & Financial Pressure:</strong> Management's harassment escalated from false claims over a pedal bicycle to filing ungrounded complaints, causing severe public humiliation. Management weaponized unconfirmed pest allegations and inflated charges ($10,000+ totals) while <strong>unlawfully blocking the resident from renting out one bedroom in the two-bedroom unit</strong> without disclosing required statutory procedures. Although a temporary grace period was discussed, management retroactively imposed interest starting September 1st—contradicting the reality that upfront lump-sum capability ($3,000–$4,000) would render a payment plan unnecessary.
+        <strong>Constructive Displacement, Duress & Tragic Loss:</strong> Management's harassment escalated to extreme duress, including having the police break the resident's door, followed by being slammed with tens of thousands of dollars in fees just to acquire the apartment and supply duress. The profound stress and shock of these actions resulted in the tragic passing of the resident's father, leaving their life completely distraught by the actions of management and the board. It is the firm belief that management and security management played a huge role in all of the incidents that occurred within the past year since the new management took over.
         <br><br>
-        All unauthorized fee assessments, legal chargebacks ($904 Sibley Righton), and discriminatory actions are strictly contested to protect resident rights, preserve procedural fairness, and combat forced displacement.
+        <strong>Police Overreach & Lack of Due Diligence:</strong> The police should have been more diligent before taking the extreme action of breaking a resident's door. The resident has lived here for 32 years with absolutely no criminal record and has never committed any crime. Despite this, police have come to the residence twice; the first time they did not break the door, but the second time they did. When the resident went to the police to demand to know who was complaining, why, and what procedural investigation was run to justify raiding the home, the resident was told they could do nothing because it involves a "non-disclosed ledger" requiring a Crown or lawyer to open. This demonstrates a system where police appear more welcoming to corporations than to civilians, acting on whatever the corporation tells them without transparency.
+        <br><br>
+        <strong>Demand for Transparency & Unsealing the Record:</strong> The resident explicitly requests assistance in unsealing the document to reveal exactly who the instigator is, as the resident has done nothing in their life to warrant this. Even when police raided the home, they claimed they were after the renter but found absolutely nothing on him and released him after 30 minutes. This entire situation feels like a pyramid game. Transparency is demanded as to exactly what led to the investigation that resulted in the door being broken. This is not the real Canada's way of life.
+        <br><br>
+        <strong>Financial Pressure & Weaponized Claims:</strong> Management's harassment escalated from false claims over a pedal bicycle to filing ungrounded complaints, causing severe public humiliation. Management weaponized unconfirmed pest allegations and inflated charges ($10,000+ totals) while unlawfully blocking the resident from renting out one bedroom in the two-bedroom unit without disclosing required statutory procedures. Although a temporary grace period was discussed, management retroactively imposed interest starting September 1st—contradicting the reality that upfront lump-sum capability ($3,000–$4,000) would render a payment plan unnecessary.
+        <br><br>
+        <strong>Security Management Complicity & Targeting of Vulnerable Residents:</strong> The security management contracted for the building has played a crucial role in this demise, acting as though they and the condominium management work hand-in-hand to eradicate long-term residents. Security refused to believe the resident's side of events, seemingly driven by an internal desire to acquire apartments that have been occupied for the longest time. This campaign specifically targets people on lower income grounds who are suffering from diseases, recuperating, or recovering from life accidents. For the past 3 years, the resident has been recovering from a hand injury, a stroke injury, and brain stroke-related injuries. Despite this, management and security pulled extra duress around the resident so they could take the apartment. The resident has paid enough into this apartment to feel it was truly theirs, but now management treats it as though it belongs to them through dirty management politics tactics.
+        <br><br>
+        <strong>Conclusion:</strong> It is clear that the current management is not fully capable of doing the job. All unauthorized fee assessments, legal chargebacks ($904 Sibley Righton), and discriminatory actions are strictly contested to protect resident rights, preserve procedural fairness, and combat forced displacement.
       </div>
     </div>
 
@@ -240,7 +249,6 @@
         return '';
     }
 
-    // NEW: Dynamic Summary Parser
     function generateDynamicSummary(bodyHtml) {
         if (!bodyHtml) return '<div>Official record of correspondence.</div>';
         let text = bodyHtml.replace(/<[^>]*>?/gm, ' ');
@@ -248,10 +256,8 @@
         
         let html = '';
 
-        // 1. Context / Greeting
         html += `<div style="margin-bottom: 8px;"><strong>Thread Context:</strong> This record documents correspondence regarding Unit 432, establishing a chronological trail of procedural non-compliance and management actions.</div>`;
 
-        // 2. Procedural Analysis
         if (lower.includes('lawyer') || lower.includes('sibley') || lower.includes('legal fee')) {
             html += `<div style="margin-bottom: 8px;"><strong>Procedural & Duty of Care Analysis:</strong> Management bypassed administrative duty of care by imposing unconsulted legal fee chargebacks without transparent root-cause verification or fair dialogue.</div>`;
         } else if (lower.includes('notice') || lower.includes('rule') || lower.includes('bypass')) {
@@ -260,14 +266,12 @@
             html += `<div style="margin-bottom: 8px;"><strong>Procedural & Duty of Care Analysis:</strong> Management consistently failed to engage in fair dialogue, opting instead to impose unverified charges and rigid enforcement.</div>`;
         }
 
-        // 3. Financial Impact
         if (lower.includes('rent') || lower.includes('room') || lower.includes('occupant')) {
             html += `<div style="margin-bottom: 8px;"><strong>Financial Impact Assessment:</strong> Direct financial damages from unlawfully blocked room rentals are being deducted from the inflated ledger, demonstrating severe financial harassment.</div>`;
         } else {
             html += `<div style="margin-bottom: 8px;"><strong>Financial Impact Assessment:</strong> Unverified bedbug/pest charges and unconsulted legal fees have resulted in a highly inflated alleged balance.</div>`;
         }
 
-        // 4. Legal Set-Off (Always at the end)
         html += `<div><strong>Legal Set-Off & Balance Reduction Statement:</strong> By applying a lawful legal set-off against management's inflated ledger (~$10,715.79)—deducting direct financial damages from blocked rentals (~$24,000+), unverified charges, and unconsulted legal fees—the entire alleged balance is extinguished under a good-faith settlement position (~$3,000+).</div>`;
 
         return html;
