@@ -25,7 +25,9 @@
   .app-header h1 { font-size: 22px; font-weight: 700; margin: 0 0 6px 0; letter-spacing: -0.025em; }
   .app-header p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.5; }
   
+  /* Video Styles */
   .video-wrapper { padding: 20px 24px; background: #ffffff; border-bottom: 1px solid #e2e8f0; }
+  .video-wrapper.middle { border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
   .video-wrapper.bottom { border-bottom: none; border-top: 1px solid #e2e8f0; margin-top: 20px; }
   .video-container { background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; border-left: 4px solid #0b2545; }
   .video-container p { font-weight: 600; margin-top: 0; margin-bottom: 12px; color: #0b2545; font-size: 1rem; }
@@ -81,6 +83,7 @@
     <p>Comprehensive Chronological Dossier • Procedural Non-Compliance & Financial Dispute Log</p>
   </div>
 
+  <!-- VIDEO 1 (TOP) -->
   <div class="video-wrapper">
       <div class="video-container">
           <p>Video 1 - The Personal Cost</p>
@@ -152,15 +155,26 @@
     </div>
   </div>
 
-  <div class="email-wrapper" id="email-list">
-    Loading official evidentiary records...
-  </div>
-
-  <div class="video-wrapper bottom">
+  <!-- VIDEO 2 (MIDDLE - AFTER SUMMARY) -->
+  <div class="video-wrapper middle">
       <div class="video-container">
           <p>Video 2 - Fighting Back & Rebuilding</p>
           <video class="scroll-video" controls playsinline muted preload="metadata">
               <source src="video2.mp4" type="video/mp4">
+          </video>
+      </div>
+  </div>
+
+  <div class="email-wrapper" id="email-list">
+    Loading official evidentiary records...
+  </div>
+
+  <!-- VIDEO 3 (BOTTOM) -->
+  <div class="video-wrapper bottom">
+      <div class="video-container">
+          <p>Video 3 - Additional Evidence</p>
+          <video class="scroll-video" controls playsinline muted preload="metadata">
+              <source src="video3.mp4" type="video/mp4">
           </video>
       </div>
   </div>
