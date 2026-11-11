@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 432 Legal Dispute & Evidence Record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important;
+    background-color: #f1f5f9 !important; overflow-x: hidden !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1e293b; -webkit-font-smoothing: antialiased;
+  }
+  body { display: flex; flex-direction: column; align-items: center; }
+  .container {
+    background-color: #ffffff; width: 100% !important; max-width: 900px !important;
+    margin: 0 auto !important; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    overflow: hidden; border: 1px solid #e2e8f0;
+  }
+  .app-header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 28px 24px; border-bottom: 1px solid #334155; }
+  .app-header h1 { font-size: 22px; font-weight: 700; margin: 0 0 6px 0; letter-spacing: -0.025em; }
+  .app-header p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.5; }
+  
+  .master-executive-summary { background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 20px 24px; }
+  .executive-box { background: #eff6ff; border: 1px solid #dbeafe; border-left: 5px solid #2563eb; padding: 18px; border-radius: 10px; color: #1e3a8a; font-size: 0.92rem; line-height: 1.7; margin-bottom: 20px; }
+  .executive-title { font-weight: 700; font-size: 1rem; color: #1d4ed8; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  
+  .schedule-box { background: #fffbe6; border: 1px solid #ffe58f; border-left: 5px solid #faad14; padding: 18px; border-radius: 10px; color: #533800; font-size: 0.9rem; line-height: 1.6; margin-bottom: 10px; }
+  .schedule-title { font-weight: 700; font-size: 1rem; color: #d48806; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .disclaimer-list { margin: 8px 0 16px 0; padding-left: 18px; }
+  .disclaimer-list li { margin-bottom: 8px; }
+  
+  .table-responsive { width: 100%; overflow-x: auto; margin-top: 12px; }
+  .finance-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: #ffffff; border-radius: 6px; overflow: hidden; border: 1px solid #ffe58f; }
+  .finance-table th { background: #fff1b8; color: #614700; font-weight: 700; text-align: left; padding: 8px 12px; border-bottom: 1px solid #ffe58f; }
+  .finance-table td { padding: 8px 12px; border-bottom: 1px solid #fff1b8; }
+  .finance-table tr:nth-child(even) { background: #fffbe6; }
+
+  .email-wrapper { padding: 20px; }
+  .card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); overflow-wrap: break-word; word-break: break-word; }
+  .step-tag { display: inline-block; background: #0ea5e9; color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
+  
+  .legal-breach-tag { display: block; background: #dc2626; color: white; padding: 12px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; margin-bottom: 16px; box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); line-height: 1.5; }
+  .breach-item { display: block; margin-top: 6px; padding-left: 20px; position: relative; }
+  .breach-item::before { content: "⚠️"; position: absolute; left: 0; font-size: 0.9rem; }
+  .breach-quote { font-style: italic; color: #fca5a5; display: block; margin-top: 4px; margin-bottom: 8px; border-left: 2px solid #fca5a5; padding-left: 8px; }
+
+  .email-meta-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: 12px; color: #64748b; }
+  .email-meta-top strong { color: #334155; }
+  .email-thread-box { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin-top: 12px; }
+  
+  .email-summary-box { background-color: #fefce8; border: 1px solid #fef08a; border-left: 4px solid #eab308; padding: 14px; margin-bottom: 16px; border-radius: 8px; font-size: 0.9rem; color: #713f12; line-height: 1.6; }
+  .email-summary-title { font-weight: 700; margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #854d0e; }
+  
+  .email-headers { font-size: 12px; line-height: 1.5; margin-bottom: 12px; color: #334155; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; word-break: break-all; }
+  .email-body { font-size: 0.9rem; line-height: 1.6; color: #0f172a; overflow-wrap: break-word; word-break: break-word; max-width: 100%; }
+  .email-body img { max-width: 100% !important; height: auto !important; display: block; margin: 10px auto; border-radius: 6px; }
+  .separator { border: none; border-top: 1px dashed #cbd5e1; margin: 20px 0 14px 0; }
+  .attachment-section { font-size: 13px; }
+  .attachment-title { font-weight: 600; margin-bottom: 8px; color: #0f172a; font-size: 0.85rem; text-transform: uppercase; }
+  .attachment-pill { display: inline-flex; align-items: center; background-color: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1; padding: 5px 12px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 500; gap: 6px; margin-right: 6px; margin-bottom: 6px; word-break: break-all; }
+  .inline-preview { margin-top: 12px; max-width: 100%; border-radius: 6px; border: 1px solid #cbd5e1; display: block; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <div class="app-header">
+    <h1>Unit 432 Legal Dispute & Evidence Record</h1>
+    <p>Comprehensive Chronological Dossier • Procedural Non-Compliance & Financial Dispute Log</p>
+  </div>
+
+  <div class="master-executive-summary">
+    <div class="executive-box">
+      
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        
+
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        
+
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        
+
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        
+
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        
+
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; border-left: 4px solid #0b2545;">
+            <p style="font-weight: bold; margin-top: 0; color: #0b2545;">Video 1 - The Personal Cost</p>
+            <video class="scroll-video" width="100%" controls playsinline muted preload="metadata" style="border-radius: 4px;">
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+<div class="executive-title">⚖️ Executive Legal Overview & Statement of Grievance</div>
+      <div>
+        This dossier establishes the official record of bad-faith targeting, regulatory non-compliance, and selective financial harassment directed against Unit 432. The resident has lived in this community for 29 years without incident, yet has never faced such embarrassment and derogatory treatment in their life. They are a recipient of CPP disability following an accidental injury and were actively pursuing AI skill development to re-enter the workforce.
+        <br><br>
+        <strong>Procedural Non-Compliance & Bad-Faith Fines:</strong> Management acted in bad faith by allowing unverified third-party gossip (from security personnel, building management, neighbors, or room occupants) to dictate corporate actions without independent verification or statutory 15-day notice procedures. <strong>Security management has been the biggest culprit in telling lies and alleging non-compliant activities.</strong> Rather than providing statutory cure periods, management abruptly levied a $2,000 fee via corporate legal counsel under immediate lien threats. After the resident paid this initial charge under duress, management exploited the compliance effort by imposing arbitrary $500 and $2,500 non-registration fines under rigid enforcement of outdated 25-year-old condominium bylaws against a standard two-bedroom unit.
+        <br><br>
+        <strong>Constructive Displacement, Duress & Tragic Loss:</strong> Management's harassment escalated to extreme duress, including having the police break the resident's door, followed by being slammed with tens of thousands of dollars in fees just to acquire the apartment and supply duress. The profound stress and shock of these actions resulted in the tragic passing of the resident's father, leaving their life completely distraught by the actions of management and the board. It is the firm belief that management and security management played a huge role in all of the incidents that occurred within the past year since the new management took over.
+        <br><br>
+        <strong>Police Overreach & Lack of Due Diligence:</strong> The police should have been more diligent before taking the extreme action of breaking a resident's door. The resident has lived here for 32 years with absolutely no criminal record and has never committed any crime. Despite this, police have come to the residence twice; the first time they did not break the door, but the second time they did. When the resident went to the police to demand to know who was complaining, why, and what procedural investigation was run to justify raiding the home, the resident was told they could do nothing because it involves a "non-disclosed ledger" requiring a Crown or lawyer to open. This demonstrates a system where police appear more welcoming to corporations than to civilians, acting on whatever the corporation tells them without transparency.
+        <br><br>
+        <strong>Demand for Transparency & Unsealing the Record:</strong> The resident explicitly requests assistance in unsealing the document to reveal exactly who the instigator is, as the resident has done nothing in their life to warrant this. Even when police raided the home, they claimed they were after the renter but found absolutely nothing on him and released him after 30 minutes. This entire situation feels like a pyramid game. Transparency is demanded as to exactly what led to the investigation that resulted in the door being broken. This is not the real Canada's way of life.
+        <br><br>
+        <strong>Financial Pressure & Weaponized Claims:</strong> Management's harassment escalated from false claims over a pedal bicycle to filing ungrounded complaints, causing severe public humiliation. Management weaponized unconfirmed pest allegations and inflated charges ($10,000+ totals) while unlawfully blocking the resident from renting out one bedroom in the two-bedroom unit without disclosing required statutory procedures. Although a temporary grace period was discussed, management retroactively imposed interest starting September 1st—contradicting the reality that upfront lump-sum capability ($3,000–$4,000) would render a payment plan unnecessary.
+        <br><br>
+        <strong>Security Management Complicity & Targeting of Vulnerable Residents:</strong> The security management contracted for the building has played a crucial role in this demise, acting as though they and the condominium management work hand-in-hand to eradicate long-term residents. Security refused to believe the resident's side of events, seemingly driven by an internal desire to acquire apartments that have been occupied for the longest time. This campaign specifically targets people on lower income grounds who are suffering from diseases, recuperating, or recovering from life accidents. For the past 3 years, the resident has been recovering from a hand injury, a stroke injury, and brain stroke-related injuries. Despite this, management and security pulled extra duress around the resident so they could take the apartment. The resident has paid enough into this apartment to feel it was truly theirs, but now management treats it as though it belongs to them through dirty management politics tactics.
+        <br><br>
+        <strong>Conclusion:</strong> It is clear that the current management is not fully capable of doing the job. All unauthorized fee assessments, legal chargebacks ($904 Sibley Righton), and discriminatory actions are strictly contested to protect resident rights, preserve procedural fairness, and combat forced displacement.
+      </div>
+    </div>
+
+    <div class="schedule-box">
+      <div class="schedule-title">📊 Official Management Payment Schedule & Formal Disclaimers</div>
+      <div>
+        <strong>Formal Notice & Strict Disclaimers:</strong> While this payment schedule was issued by management, several charges are formally and explicitly contested:
+        <ul class="disclaimer-list">
+          <li><strong>Unconfirmed Bedbug / Pest Charges:</strong> Strictly disclaimed in full as unverified, unsubstantiated, and improper assessments.</li>
+          <li><strong>Sibley Righton Legal Fees ($1,000 to $2,000 escalation):</strong> Disclaimed. The initial $1,000 legal invoice (which escalated to $2,000) was billed without prior consultation, proper written notice, or any 15-day cure period. When management (Israa Adam) was approached, she stated that <em>"it costs money to talk to lawyers"</em>—effectively denying reasonable dialogue and refusing discussion to prevent billing the resident, creating an untenable barrier to communication.</li>
+          <li><strong>Financial Hardship & Rental Income Loss:</strong> This schedule ignores the severe financial devastation caused by management unlawfully blocking room rentals. Losing $1,600/month ($19,200 annually for two blocked rooms while residing in the living room on CPP disability), combined with bad-faith fees, brings the total personal and financial impact to <strong>$50,000 to $100,000</strong>. Maximum good-faith gesture: ~$3,000+ (with a $1,000 arguable levy for a fragile door latch).</li>
+        </ul>
+      </div>
+
+      <div class="table-responsive">
+        <table class="finance-table">
+          <thead>
+            <tr>
+              <th>Payment Date</th>
+              <th>Opening Balance</th>
+              <th>Interest (2%)</th>
+              <th>Payment</th>
+              <th>Remaining Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>October 13, 2026</td><td>$10,715.79</td><td>$412.92</td><td>$2,000.00</td><td>$9,128.71</td></tr>
+            <tr><td>November 1, 2026</td><td>$9,128.71</td><td>$182.57</td><td>$1,000.00</td><td>$8,311.28</td></tr>
+            <tr><td>December 1, 2026</td><td>$8,311.28</td><td>$166.23</td><td>$1,000.00</td><td>$7,477.51</td></tr>
+            <tr><td>January 1, 2027</td><td>$7,477.51</td><td>$149.55</td><td>$1,000.00</td><td>$6,627.06</td></tr>
+            <tr><td>February 1, 2027</td><td>$6,627.06</td><td>$132.54</td><td>$1,000.00</td><td>$5,759.60</td></tr>
+            <tr><td>March 1, 2027</td><td>$5,759.60</td><td>$115.19</td><td>$1,000.00</td><td>$4,874.79</td></tr>
+            <tr><td>April 1, 2027</td><td>$4,874.79</td><td>$97.50</td><td>$1,000.00</td><td>$3,972.29</td></tr>
+            <tr><td>May 1, 2027</td><td>$3,972.29</td><td>$79.45</td><td>$1,000.00</td><td>$3,051.74</td></tr>
+            <tr><td>June 1, 2027</td><td>$3,051.74</td><td>$61.03</td><td>$1,000.00</td><td>$2,112.77</td></tr>
+            <tr><td>July 1, 2027</td><td>$2,112.77</td><td>$42.26</td><td>$1,000.00</td><td>$1,155.03</td></tr>
+            <tr><td>August 1, 2027</td><td>$1,155.03</td><td>$23.10</td><td>$1,178.13</td><td>$0.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="email-wrapper" id="email-list">
+    Loading official evidentiary records...
+  </div>
+</div>
+
+
+
+    <div style="padding: 10px 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        <h3 style="color: #0b2545; margin-bottom: 15px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">Evidence Videos</h3>
+        
+
+    
+
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        <h3 style="color: #0b2545; margin-bottom: 15px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">Evidence Videos</h3>
+        
+
+    
+
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        
+
+    
+
+    <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; border-left: 4px solid #0b2545;">
+            <p style="font-weight: bold; margin-top: 0; color: #0b2545;">Video 2 - Fighting Back & Rebuilding</p>
+            <video class="scroll-video" width="100%" controls playsinline muted preload="metadata" style="border-radius: 4px;">
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('.scroll-video');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.muted = true; 
+                        entry.target.play().catch(e => console.log('Autoplay blocked by browser'));
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { threshold: 0.5 }); 
+            videos.forEach(video => { observer.observe(video); });
+        });
+    </script>
+</body>
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>
+
+</html>

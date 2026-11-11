@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 432 Legal Dispute & Evidence Record</title>
+    <style>
+        body { margin: 0; padding: 0; background-color: #f4f7f6; font-family: sans-serif; }
+        .header { background-color: #0b2545; color: white; padding: 30px 20px; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .header p { margin: 10px 0 0 0; color: #a0b2c6; }
+        .content-container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .text-box { background-color: #f0f6ff; border-left: 4px solid #0b2545; border-radius: 8px; padding: 20px; margin-bottom: 20px; line-height: 1.6; color: #1a1a1a; }
+        .text-box h2 { color: #0b2545; margin-top: 0; }
+        .video-box { background: #ffffff; padding: 15px; border-radius: 8px; border-left: 4px solid #0b2545; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .video-box p { font-weight: bold; margin-top: 0; color: #0b2545; }
+        video { width: 100%; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Unit 432 Legal Dispute & Evidence Record</h1>
+        <p>Comprehensive Chronological Dossier • Procedural Non-Compliance & Financial Dispute Log</p>
+    </div>
+
+    <div class="content-container">
+        <!-- VIDEO 1 (TOP) -->
+        <div class="video-box">
+            <p>Video 1 - The Personal Cost</p>
+            <video class="scroll-video" controls playsinline muted preload="metadata">
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- YOUR LEGAL TEXT -->
+        <div class="text-box">
+            <h2>⚖️ Executive Legal Overview & Statement of Grievance</h2>
+            <p>This dossier establishes the official record of bad-faith targeting, regulatory non-compliance, and selective financial harassment directed against Unit 432. The resident has lived in this community for 29 years without incident, yet has never faced such embarrassment and derogatory treatment in their life. They are a recipient of CPP disability following an accidental injury and were actively pursuing AI skill development to re-enter the workforce.</p>
+            
+            <p><strong>Procedural Non-Compliance & Bad-Faith Fines:</strong><br>
+            Management acted in bad faith by allowing unverified third-party gossip (from security personnel, building management, neighbors, or room occupants) to dictate corporate actions without independent verification or statutory 15-day notice procedures. <strong>Security management has been the biggest culprit in telling lies and alleging non-compliant activities.</strong> Rather than providing statutory cure periods, management...</p>
+        </div>
+
+        <!-- VIDEO 2 (BOTTOM) -->
+        <div class="video-box">
+            <p>Video 2 - Fighting Back & Rebuilding</p>
+            <video class="scroll-video" controls playsinline muted preload="metadata">
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- Auto-Play on Scroll Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('.scroll-video');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.muted = true; 
+                        entry.target.play().catch(e => console.log('Autoplay blocked by browser policy'));
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { threshold: 0.5 }); 
+            videos.forEach(video => { observer.observe(video); });
+        });
+    </script>
+</body>
+</html>
